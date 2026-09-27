@@ -34,55 +34,79 @@
       </div>
 
       <button type="submit" class="btn-submit">Enter the gate</button>
+      <p class="form-status" id="login-status" aria-live="polite"></p>
     </form>
 
     <p class="switch-link">Not registered yet? <a href="register.html">Awaken as a hunter</a></p>
   </main>
 
   <script>
-        $(document).ready(function(){
+    $(function () {
+      var maxAttempts = 3;
+      var form = $("#hunterForm");
+      var status = $("#login-status");
 
-            $("#myForm").validate({
+      function lockLogin() {
+        localStorage.setItem("hunterLoginLocked", "true");
+        form.find("input, button").prop("disabled", true);
+        status.text("Login locked after 3 failed attempts.").addClass("is-error");
+      }
 
-                rules:{
+      if (localStorage.getItem("hunterLoginLocked") === "true") {
+        lockLogin();
+        return;
+      }
 
-                    name:{
-                        required: true,
-                        minlength: 2,
-                        maxlength: 15
-                    },
-                    email:{
-                        required: true,
-                        email: true
-                    },
-                    password:{
-                        required:true,
-                        minlength: 6,
-                    }
-                },
+      form.validate({
+        errorElement: "span",
+        errorClass: "field-error",
+        rules: {
+          username: {
+            required: true
+          },
+          password: {
+            required: true
+          }
+        },
+        messages: {
+          username: {
+            required: "Please enter your Hunter ID"
+          },
+          password: {
+            required: "Please enter your password"
+          }
+        },
+        submitHandler: function (formElement) {
+          var account;
 
-                messages:{
+          try {
+            account = JSON.parse(localStorage.getItem("hunterAccount"));
+          } catch (error) {
+            account = null;
+          }
 
-                    name:{
-                        required: "Please enter your name",
-                        minlength: "Name must be at least 2 characters long",
-                        maxlength: "Name cannot exceed 15 characters"
-                    },
-                    email:{
-                        required: "Please enter your email",
-                        email: "Please enter a valid email address"
-                    },
-                    password:{
-                        required: "Please provide a password",
-                        minlength: "Password must be at least 6 characters long"
-                    }
-                },
+          var username = formElement.elements.username.value.trim();
+          var password = formElement.elements.password.value;
+          var validLogin = account && account.username === username && account.password === password;
 
-    
+          if (validLogin) {
+            localStorage.removeItem("hunterLoginAttempts");
+            formElement.submit();
+            return;
+          }
 
-            });
+          var attempts = Number(localStorage.getItem("hunterLoginAttempts") || 0) + 1;
+          localStorage.setItem("hunterLoginAttempts", attempts);
 
-        });
-    </script>
+          if (attempts >= maxAttempts) {
+            lockLogin();
+            return;
+          }
+
+          status.text("Invalid Hunter ID or password. " + (maxAttempts - attempts) + " attempt(s) remaining.").addClass("is-error");
+        }
+      });
+    });
+  </script>
 </body>
 </html>

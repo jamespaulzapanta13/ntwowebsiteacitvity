@@ -158,6 +158,30 @@ h1.title {
   background: rgba(79, 216, 255, 0.05);
 }
 
+.field input.error {
+  border-color: #ef7373;
+}
+
+.field-error,
+.form-status {
+  display: block;
+  margin-top: 6px;
+  color: #ff9b9b;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.form-status {
+  min-height: 16px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.btn-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
 .field-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -178,6 +202,32 @@ h1.title {
   align-items: center;
   gap: 6px;
   cursor: pointer;
+}
+
+.terms-option {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.terms-option label {
+  cursor: pointer;
+}
+
+.terms-link {
+  border: 0;
+  padding: 0;
+  color: var(--cyan);
+  background: transparent;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.terms-link:hover {
+  color: var(--cyan-text);
 }
 
 .remember-row a {
@@ -226,6 +276,89 @@ h1.title {
 
 .switch-link a:hover {
   text-decoration: underline;
+}
+
+.conduct-dialog {
+  width: min(560px, calc(100% - 32px));
+  max-height: min(660px, calc(100vh - 32px));
+  padding: 26px;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  color: var(--cyan-text);
+  background: #09121c;
+  border: 1px solid var(--cyan);
+  border-radius: var(--radius);
+}
+
+.conduct-dialog::-webkit-scrollbar {
+  display: none;
+}
+
+.conduct-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.conduct-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.conduct-dialog .eyebrow {
+  margin: 2px 0 14px;
+  text-align: left;
+}
+
+.conduct-dialog h2 {
+  margin: 0 0 14px;
+  color: var(--cyan);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+}
+
+.conduct-dialog__content {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.conduct-dialog__content p {
+  margin: 0 0 14px;
+}
+
+.conduct-dialog__content ol {
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+
+.conduct-dialog__content li + li {
+  margin-top: 8px;
+}
+
+.conduct-dialog__content blockquote {
+  margin: 0;
+  padding: 12px 14px;
+  color: var(--cyan-text);
+  background: rgba(79, 216, 255, 0.08);
+  border-left: 3px solid var(--cyan);
+}
+
+.dialog-close {
+  padding: 7px 10px;
+  color: var(--cyan);
+  background: transparent;
+  border: 1px solid var(--cyan-dim);
+  border-radius: 4px;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dialog-close:hover {
+  color: #04121a;
+  background: var(--cyan);
 }
 
 @media (max-width: 480px) {

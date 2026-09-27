@@ -12,10 +12,10 @@
     <h1 class="title">Awaken</h1>
     <p class="subtitle">Create your hunter profile to begin</p>
 
-    <form action="landing.html" method="get">
+    <form action="landing.html" method="get" id="registerForm">
       <div class="field">
         <label for="fullname">Full name</label>
-        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required autocomplete="name">
+        <input type="text" id="fullname" name="name" placeholder="Enter your full name" required autocomplete="name">
       </div>
 
       <div class="field">
@@ -40,10 +40,11 @@
       </div>
 
       <div class="remember-row">
-        <label for="terms">
+        <div class="terms-option">
           <input type="checkbox" id="terms" name="terms" required>
-          I accept the hunter code of conduct
-        </label>
+          <label for="terms">I accept the</label>
+          <button type="button" class="terms-link" id="view-conduct">Hunter Code of Conduct</button>
+        </div>
       </div>
 
       <button type="submit" class="btn-submit">Confirm awakening</button>
@@ -52,7 +53,110 @@
     <p class="switch-link">Already a hunter? <a href="login.html">Log in here</a></p>
   </main>
 
+  <dialog class="conduct-dialog" id="conduct-dialog" aria-labelledby="conduct-title">
+    <div class="conduct-dialog__header">
+      <p class="eyebrow">HUNTER ASSOCIATION</p>
+      <button type="button" class="dialog-close" id="close-conduct" aria-label="Close Hunter Code of Conduct">Close</button>
+    </div>
+    <h2 id="conduct-title">Hunter Code of Conduct</h2>
+    <div class="conduct-dialog__content">
+      <p>By joining the Hunter Association, you officially agree to the following highly important and definitely serious rules:</p>
+      <ol>
+        <li><strong>I agree that I am handsome in all battles</strong>, regardless of whether I actually contributed to the team.</li>
+        <li>I promise to enter every dungeon with <strong>100% confidence and approximately 12% actual preparation</strong>.</li>
+        <li>If I get carried by my party, I will respectfully pretend that <strong>it was all part of my strategy</strong>.</li>
+        <li>I agree to never blame the healer, tank, lag, keyboard, mouse, Wi-Fi, or my teammates. <em>(Unless absolutely necessary.)</em></li>
+        <li>I shall maintain maximum aura at all times, even when my HP is at <strong>1/100</strong>.</li>
+        <li>If a monster is stronger than me, I will confidently say <strong>"I've got this"</strong> before immediately reconsidering my life choices.</li>
+        <li>I promise to look cool while entering the dungeon, even if I have no idea what the quest objective is.</li>
+        <li>I acknowledge that being defeated does not mean I lost. <strong>It means the dungeon was temporarily stronger than me.</strong></li>
+        <li>I agree that my Hunter ID may be used exclusively for important activities such as <strong>looking handsome, clearing dungeons, and collecting unnecessary loot</strong>.</li>
+        <li>Finally, I accept that I am legally, spiritually, and magically required to say:</li>
+      </ol>
+      <blockquote><strong>"I agree. I am handsome in all battles. Now let me enter the dungeon."</strong></blockquote>
+    </div>
+  </dialog>
+
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.22.1/jquery.validate.min.js" integrity="sha512-qu7dMuIm2f0KcKZ3BOoP4c+Hn+r4E8PbD2Ro4rmKsOyheCxcwhzQpf6SojA76dn+owqfANzfTFUTkGA+HpHjOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    $(function () {
+      var conductDialog = document.getElementById("conduct-dialog");
+
+      $("#view-conduct").on("click", function () {
+        conductDialog.showModal();
+      });
+
+      $("#close-conduct").on("click", function () {
+        conductDialog.close();
+      });
+
+      conductDialog.addEventListener("click", function (event) {
+        if (event.target === conductDialog) {
+          conductDialog.close();
+        }
+      });
+
+      $("#registerForm").validate({
+        errorElement: "span",
+        errorClass: "field-error",
+        rules: {
+          name: {
+            required: true,
+            minlength: 2,
+            maxlength: 15
+          },
+          email: {
+            required: true,
+            email: true
+          },
+          password: {
+            required: true,
+            minlength: 6
+          },
+          confirm_password: {
+            required: true,
+            equalTo: "#reg-password"
+          },
+          terms: {
+            required: true
+          }
+        },
+        messages: {
+          name: {
+            required: "Please enter your name",
+            minlength: "Name must be at least 2 characters long",
+            maxlength: "Name cannot exceed 15 characters"
+          },
+          email: {
+            required: "Please enter your email",
+            email: "Please enter a valid email address"
+          },
+          password: {
+            required: "Please provide a password",
+            minlength: "Password must be at least 6 characters long"
+          },
+          confirm_password: {
+            required: "Please confirm your password",
+            equalTo: "Passwords do not match"
+          },
+          terms: {
+            required: "Please accept the hunter code of conduct"
+          }
+        },
+        submitHandler: function (form) {
+          localStorage.setItem("hunterAccount", JSON.stringify({
+            name: form.elements.name.value.trim(),
+            username: form.elements.username.value.trim(),
+            email: form.elements.email.value.trim(),
+            password: form.elements.password.value
+          }));
+          localStorage.removeItem("hunterLoginAttempts");
+          localStorage.removeItem("hunterLoginLocked");
+          form.submit();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
