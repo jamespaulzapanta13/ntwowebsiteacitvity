@@ -1,0 +1,465 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-void: #05070b;
+  --panel: rgba(8, 14, 22, 0.78);
+  --cyan: #4fd8ff;
+  --cyan-dim: #2c7fa3;
+  --cyan-text: #bdeeff;
+  --muted: #7d97a8;
+  --radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  color: var(--cyan-text);
+  background-color: var(--bg-void);
+}
+
+.font-display {
+  font-family: 'Orbitron', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.login-page,
+.auth-page {
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+  position: relative;
+}
+
+.login-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(3, 6, 10, 0.55) 0%, rgba(3, 6, 10, 0.85) 100%);
+  z-index: 0;
+}
+
+.login-page {
+  background-image: url('loginbg.jpg');
+}
+
+.register-page {
+  background-image: url('registerbg.jpg');
+}
+
+.auth-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  background: var(--panel);
+  border: 1px solid var(--cyan-dim);
+  border-radius: var(--radius);
+  padding: 40px 36px 32px;
+  backdrop-filter: blur(6px);
+}
+
+.auth-card::before,
+.auth-card::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--cyan);
+}
+
+.auth-card::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.auth-card::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+.eyebrow {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+
+h1.title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--cyan);
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0 0 28px;
+}
+
+.field {
+  margin-bottom: 18px;
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.field input {
+  width: 100%;
+  padding: 11px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--cyan-dim);
+  border-radius: var(--radius);
+  color: var(--cyan-text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 15px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.field input::placeholder {
+  color: #3f5a6b;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--cyan);
+  background: rgba(79, 216, 255, 0.05);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.remember-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 24px;
+  color: var(--muted);
+}
+
+.remember-row label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.remember-row a {
+  color: var(--cyan-dim);
+}
+
+.remember-row a:hover {
+  color: var(--cyan);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 13px;
+  background: rgba(79, 216, 255, 0.1);
+  border: 1px solid var(--cyan);
+  border-radius: var(--radius);
+  color: var(--cyan);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-submit:hover {
+  background: var(--cyan);
+  color: #04121a;
+}
+
+.btn-submit:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+.switch-link {
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--muted);
+  margin: 22px 0 0;
+}
+
+.switch-link a {
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+.switch-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 32px 22px 26px;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  h1.title {
+    font-size: 19px;
+  }
+}
+
+.navbar-system {
+  background: rgba(5, 7, 11, 0.9);
+  border-bottom: 1px solid var(--cyan-dim);
+  backdrop-filter: blur(6px);
+}
+
+.navbar-system .navbar-brand {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--cyan);
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.navbar-system .nav-link {
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 0 6px;
+}
+
+.navbar-system .nav-link:hover,
+.navbar-system .nav-link.active {
+  color: var(--cyan);
+}
+
+.btn-system {
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  padding: 8px 20px;
+  border-radius: 4px;
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-system:hover {
+  background: var(--cyan);
+  color: #04121a;
+}
+
+.gate-banner {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(180deg, rgba(3,6,10,0.5) 0%, rgba(3,6,10,0.92) 100%), url('landinbg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.gate-banner-eyebrow {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: var(--cyan-dim);
+  margin-bottom: 14px;
+}
+
+.gate-banner h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  color: var(--cyan);
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+.gate-banner p.lead {
+  color: var(--cyan-text);
+  font-size: 19px;
+  max-width: 520px;
+  margin-bottom: 30px;
+}
+
+.section-system {
+  padding: 90px 0;
+  border-top: 1px solid rgba(79, 216, 255, 0.15);
+}
+
+.section-eyebrow {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--cyan-dim);
+  margin-bottom: 10px;
+}
+
+.section-heading {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--cyan);
+  margin-bottom: 18px;
+}
+
+.section-text {
+  color: var(--muted);
+  font-size: 16.5px;
+  max-width: 620px;
+}
+
+.status-visual {
+  border: 1px solid var(--cyan-dim);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(79,216,255,0.08);
+}
+
+.status-visual img {
+  width: 100%;
+  display: block;
+}
+
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--cyan-dim);
+  border-radius: 6px;
+  padding: 20px;
+  height: 100%;
+}
+
+.stat-card .stat-label {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.stat-card .stat-value {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 26px;
+  color: var(--cyan);
+}
+
+.dungeon-section {
+  position: relative;
+  background-image: linear-gradient(180deg, rgba(3,6,10,0.35) 0%, rgba(3,6,10,0.9) 100%), url('dungeongate.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 110px 0;
+  border-top: 1px solid rgba(79, 216, 255, 0.15);
+}
+
+.rank-card {
+  background: rgba(5, 8, 12, 0.7);
+  border: 1px solid var(--cyan-dim);
+  border-radius: 6px;
+  padding: 22px 18px;
+  text-align: center;
+  backdrop-filter: blur(3px);
+}
+
+.rank-card .rank-letter {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 30px;
+  color: var(--cyan);
+}
+
+.rank-card .rank-name {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.footer-system {
+  background: #030508;
+  border-top: 1px solid rgba(79, 216, 255, 0.15);
+  padding: 36px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.footer-system a {
+  color: var(--cyan-dim);
+}
+
+.footer-system a:hover {
+  color: var(--cyan);
+}
+
+@media (max-width: 576px) {
+  .gate-banner {
+    min-height: 100vh;
+    text-align: center;
+  }
+
+  .gate-banner .d-flex {
+    justify-content: center;
+  }
+
+  .section-system {
+    padding: 60px 0;
+  }
+
+  .dungeon-section {
+    padding: 70px 0;
+  }
+
+  .stat-card {
+    padding: 14px;
+  }
+
+  .stat-card .stat-value {
+    font-size: 21px;
+  }
+
+  .rank-card {
+    padding: 14px 8px;
+  }
+
+  .rank-card .rank-letter {
+    font-size: 22px;
+  }
+
+  .rank-card .rank-name {
+    font-size: 11px;
+  }
+}

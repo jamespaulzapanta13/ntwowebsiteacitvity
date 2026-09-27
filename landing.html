@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The System | Hunter Network</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-system fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">THE SYSTEM</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#status">Status</a></li>
+          <li class="nav-item"><a class="nav-link" href="#dungeons">Dungeons</a></li>
+          <li class="nav-item ms-lg-3"><a class="btn-system" href="login.html">Log out</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="gate-banner" id="home">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <p class="gate-banner-eyebrow">WELCOME BACK</p>
+          <h1>You have<br>awakened.</h1>
+          <p class="lead">Sign-in confirmed. Your status window is active — track your stats, clear dungeons, and climb the ranks through a single system built to measure your growth.</p>
+          <div class="d-flex gap-3 flex-wrap">
+            <a href="#status" class="btn-system">View status window</a>
+            <a href="#dungeons" class="btn btn-outline-light btn-sm px-4 py-2" style="border-color:#3a4b56; color:#bdeeff;">Browse dungeons</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="section-system" id="status">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-6">
+          <p class="section-eyebrow">STATUS WINDOW</p>
+          <h2 class="section-heading">Every stat, tracked in real time</h2>
+          <p class="section-text">The moment you register, the system opens a status window unique to you. HP, MP, and core attributes update automatically as you complete quests and clear dungeons, so progress is never a guess.</p>
+          <div class="row row-cols-2 g-3 mt-2" style="max-width: 480px;">
+            <div class="col">
+              <div class="stat-card">
+                <div class="stat-label">STRENGTH</div>
+                <div class="stat-value">128</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="stat-card">
+                <div class="stat-label">AGILITY</div>
+                <div class="stat-value">196</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="stat-card">
+                <div class="stat-label">VITALITY</div>
+                <div class="stat-value">112</div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="stat-card">
+                <div class="stat-label">INTELLIGENCE</div>
+                <div class="stat-value">98</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="status-visual">
+            <img src="assets/statuspanel.jpg" alt="Example hunter status window showing level, HP, MP, core stats, and equipped skills" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dungeon-section" id="dungeons">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7">
+          <p class="section-eyebrow">GATE RANKING</p>
+          <h2 class="section-heading">Not every gate is the same</h2>
+          <p class="section-text">Dungeons are ranked from E to S based on the threat inside. Higher ranks demand stronger hunters, better coordination, and no room for hesitation at the gate.</p>
+        </div>
+      </div>
+      <div class="row row-cols-3 row-cols-md-5 g-3 mt-4">
+        <div class="col">
+          <div class="rank-card">
+            <div class="rank-letter">E</div>
+            <div class="rank-name">Low threat</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="rank-card">
+            <div class="rank-letter">C</div>
+            <div class="rank-name">Moderate</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="rank-card">
+            <div class="rank-letter">A</div>
+            <div class="rank-name">Severe</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="rank-card">
+            <div class="rank-letter">S</div>
+            <div class="rank-name">National level</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="rank-card">
+            <div class="rank-letter">?</div>
+            <div class="rank-name">Unclassified</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-system">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span>&copy; 2026 The System. All hunters registered. SSS RANK JAMES</span>
+      <div class="d-flex gap-3">
+        <a href="login.html">Log in</a>
+        <a href="register.html">Register</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+</body>
+</html>

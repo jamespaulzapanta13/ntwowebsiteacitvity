@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hunter Login | System</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.22.1/jquery.validate.min.js" integrity="sha512-qu7dMuIm2f0KcKZ3BOoP4c+Hn+r4E8PbD2Ro4rmKsOyheCxcwhzQpf6SojA76dn+owqfANzfTFUTkGA+HpHjOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body class="login-page">
+  <main class="auth-card">
+    <p class="eyebrow">SYSTEM ACCESS</p>
+    <h1 class="title">Hunter login</h1>
+    <p class="subtitle">Sign in to view your status window</p>
+
+    <form action="landing.html" method="get" id="hunterForm">
+      <div class="field">
+        <label for="username">Hunter ID</label>
+        <input type="text" id="username" name="username" placeholder="Enter your hunter ID" required autocomplete="username">
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+      </div>
+
+      <div class="remember-row">
+        <label for="remember">
+          <input type="checkbox" id="remember" name="remember">
+          Remember me
+        </label>
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn-submit">Enter the gate</button>
+    </form>
+
+    <p class="switch-link">Not registered yet? <a href="register.html">Awaken as a hunter</a></p>
+  </main>
+
+  <script>
+        $(document).ready(function(){
+
+            $("#myForm").validate({
+
+                rules:{
+
+                    name:{
+                        required: true,
+                        minlength: 2,
+                        maxlength: 15
+                    },
+                    email:{
+                        required: true,
+                        email: true
+                    },
+                    password:{
+                        required:true,
+                        minlength: 6,
+                    }
+                },
+
+                messages:{
+
+                    name:{
+                        required: "Please enter your name",
+                        minlength: "Name must be at least 2 characters long",
+                        maxlength: "Name cannot exceed 15 characters"
+                    },
+                    email:{
+                        required: "Please enter your email",
+                        email: "Please enter a valid email address"
+                    },
+                    password:{
+                        required: "Please provide a password",
+                        minlength: "Password must be at least 6 characters long"
+                    }
+                },
+
+    
+
+            });
+
+        });
+    </script>
+</body>
+</html>

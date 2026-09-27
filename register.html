@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hunter Registration | System</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="auth-page register-page">
+  <main class="auth-card">
+    <p class="eyebrow">NEW HUNTER</p>
+    <h1 class="title">Awaken</h1>
+    <p class="subtitle">Create your hunter profile to begin</p>
+
+    <form action="landing.html" method="get">
+      <div class="field">
+        <label for="fullname">Full name</label>
+        <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required autocomplete="name">
+      </div>
+
+      <div class="field">
+        <label for="reg-username">Hunter ID</label>
+        <input type="text" id="reg-username" name="username" placeholder="Choose a hunter ID" required autocomplete="username">
+      </div>
+
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required autocomplete="email">
+      </div>
+
+      <div class="field field-row">
+        <div>
+          <label for="reg-password">Password</label>
+          <input type="password" id="reg-password" name="password" placeholder="Create password" required autocomplete="new-password">
+        </div>
+        <div>
+          <label for="confirm-password">Confirm password</label>
+          <input type="password" id="confirm-password" name="confirm_password" placeholder="Repeat password" required autocomplete="new-password">
+        </div>
+      </div>
+
+      <div class="remember-row">
+        <label for="terms">
+          <input type="checkbox" id="terms" name="terms" required>
+          I accept the hunter code of conduct
+        </label>
+      </div>
+
+      <button type="submit" class="btn-submit">Confirm awakening</button>
+    </form>
+
+    <p class="switch-link">Already a hunter? <a href="login.html">Log in here</a></p>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.22.1/jquery.validate.min.js" integrity="sha512-qu7dMuIm2f0KcKZ3BOoP4c+Hn+r4E8PbD2Ro4rmKsOyheCxcwhzQpf6SojA76dn+owqfANzfTFUTkGA+HpHjOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
