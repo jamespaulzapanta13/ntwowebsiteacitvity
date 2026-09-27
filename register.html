@@ -151,8 +151,6 @@
             email: form.elements.email.value.trim(),
             password: form.elements.password.value
           }));
-          localStorage.removeItem("hunterLoginAttempts");
-          localStorage.removeItem("hunterLoginLocked");
           form.submit();
         }
       });

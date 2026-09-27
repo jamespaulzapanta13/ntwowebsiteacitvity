@@ -13,6 +13,7 @@
     <p class="eyebrow">SYSTEM ACCESS</p>
     <h1 class="title">Hunter Login</h1>
     <p class="subtitle">Sign in to view your status window</p>
+    <p class="login-limit" id="login-limit" aria-live="polite"></p>
 
     <form action="landing.html" method="get" id="hunterForm">
       <div class="field">
@@ -43,19 +44,25 @@
   <script>
     $(function () {
       var maxAttempts = 3;
+      var attempts = 0;
       var form = $("#hunterForm");
       var status = $("#login-status");
+      var limit = $("#login-limit");
+
+      function showAttempts(attempts) {
+        var remaining = maxAttempts - attempts;
+        limit.text("Security limit: " + remaining + " attempt(s) remaining.");
+      }
 
       function lockLogin() {
-        localStorage.setItem("hunterLoginLocked", "true");
         form.find("input, button").prop("disabled", true);
         status.text("Login locked after 3 failed attempts.").addClass("is-error");
+        limit.text("Security limit reached. Access is locked.").addClass("is-error");
       }
 
-      if (localStorage.getItem("hunterLoginLocked") === "true") {
-        lockLogin();
-        return;
-      }
+      localStorage.removeItem("hunterLoginAttempts");
+      localStorage.removeItem("hunterLoginLocked");
+      showAttempts(attempts);
 
       form.validate({
         errorElement: "span",
@@ -90,13 +97,12 @@
           var validLogin = account && account.username === username && account.password === password;
 
           if (validLogin) {
-            localStorage.removeItem("hunterLoginAttempts");
+            attempts = 0;
             formElement.submit();
             return;
           }
 
-          var attempts = Number(localStorage.getItem("hunterLoginAttempts") || 0) + 1;
-          localStorage.setItem("hunterLoginAttempts", attempts);
+          attempts += 1;
 
           if (attempts >= maxAttempts) {
             lockLogin();
@@ -104,6 +110,7 @@
           }
 
           status.text("Invalid Hunter ID or password. " + (maxAttempts - attempts) + " attempt(s) remaining.").addClass("is-error");
+          showAttempts(attempts);
         }
       });
     });
